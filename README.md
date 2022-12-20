@@ -1,4 +1,4 @@
-# flutter_application_final
+# HorseRace
 
 A new Flutter project.
 
