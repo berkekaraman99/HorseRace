@@ -1,4 +1,6 @@
 //* Çıkış diyalogu
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_final/product/extension/multi_languages.dart';
@@ -17,7 +19,11 @@ class ExitDialog extends StatelessWidget {
           style: TextStyle(fontSize: CustomTextStyle().fontSizeS)),
       actions: [
         ElevatedButton(
-          onPressed: () => {SystemNavigator.pop()},
+          onPressed: () async {
+            SystemNavigator.pop();
+            await Future.delayed(const Duration(milliseconds: 500));
+            exit(0);
+          },
           child: Text(
             MultiLanguages.of(context)!.translate('exit_yes'),
             style: TextStyle(fontSize: CustomTextStyle().fontSizeS),

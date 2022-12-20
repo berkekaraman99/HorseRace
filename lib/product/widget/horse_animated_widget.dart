@@ -18,7 +18,7 @@ class _HorseAnimated extends StatelessWidget {
       top: top,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: HorseImage().horseImage,
+        child: AppImages().horseImage,
       ),
     );
   }

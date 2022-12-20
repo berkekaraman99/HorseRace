@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter_application_final/product/extension/sfx.dart';
 import 'package:flutter_application_final/product/global/animated_duration_const.dart';
-import 'package:flutter_application_final/product/global/horse_images.dart';
+import 'package:flutter_application_final/product/global/images.dart';
 import 'package:flutter_application_final/product/global/text_const.dart';
 import 'package:flutter_application_final/product/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
@@ -137,26 +137,34 @@ class _GameStateState extends State<GameState> {
                     children: [
                       FittedBox(
                         fit: BoxFit.fitWidth,
-                        child: Text(
-                            toggleWidget
-                                ? MultiLanguages.of(context)!
-                                    .translate('gamestate_race_start')
-                                : MultiLanguages.of(context)!
-                                    .translate('gamestate_race_end'),
-                            style: TextStyle(
-                                fontSize: CustomTextStyle().fontSizeHeader,
-                                shadows: [
-                                  Shadow(
-                                      offset: const Offset(0.0, 0.0),
-                                      blurRadius: 3.0,
-                                      color: Theme.of(context)
-                                          .secondaryHeaderColor),
-                                  Shadow(
-                                      offset: const Offset(0.0, 0.0),
-                                      blurRadius: 3.0,
-                                      color: Theme.of(context)
-                                          .secondaryHeaderColor)
-                                ])),
+                        child: Row(
+                          children: [
+                            AppImages().flag,
+                            const SizedBox(width: 16.0),
+                            Text(
+                                toggleWidget
+                                    ? MultiLanguages.of(context)!
+                                        .translate('gamestate_race_start')
+                                    : MultiLanguages.of(context)!
+                                        .translate('gamestate_race_end'),
+                                style: TextStyle(
+                                    fontSize: CustomTextStyle().fontSizeHeader,
+                                    shadows: [
+                                      Shadow(
+                                          offset: const Offset(0.0, 0.0),
+                                          blurRadius: 3.0,
+                                          color: Theme.of(context)
+                                              .secondaryHeaderColor),
+                                      Shadow(
+                                          offset: const Offset(0.0, 0.0),
+                                          blurRadius: 3.0,
+                                          color: Theme.of(context)
+                                              .secondaryHeaderColor)
+                                    ])),
+                            const SizedBox(width: 16.0),
+                            AppImages().flag,
+                          ],
+                        ),
                       ),
                       const SizedBox(
                         height: 16.0,

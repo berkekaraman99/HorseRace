@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/product/global/horse_images.dart';
+import 'package:flutter_application_final/product/global/images.dart';
 import 'package:flutter_application_final/product/global/text_const.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 
@@ -22,7 +22,7 @@ class WinnerList extends StatelessWidget {
                 '${index! + 1}.',
                 style: TextStyle(fontSize: CustomTextStyle().fontSizeL),
               ),
-              HorseImage().horseIcon,
+              AppImages().horseIcon,
               const SizedBox(width: 16.0),
               Text(
                 '${winnerList[index!].name}',
