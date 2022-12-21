@@ -1,10 +1,12 @@
 //* Çıkış diyalogu
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
+
+import '../../core/lang/locale_keys.g.dart';
 
 class ExitDialog extends StatelessWidget {
   const ExitDialog({super.key});
@@ -12,10 +14,9 @@ class ExitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(MultiLanguages.of(context)!.translate('dialog_exit_app'),
+      title: Text(LocaleKeys.dialog_exit_app.tr(),
           style: TextStyle(fontSize: CustomTextStyle().fontSizeL)),
-      content: Text(
-          MultiLanguages.of(context)!.translate('dialog_exit_app_message'),
+      content: Text(LocaleKeys.dialog_exit_app_message.tr(),
           style: TextStyle(fontSize: CustomTextStyle().fontSizeS)),
       actions: [
         ElevatedButton(
@@ -25,16 +26,14 @@ class ExitDialog extends StatelessWidget {
             exit(0);
           },
           child: Text(
-            MultiLanguages.of(context)!.translate('exit_yes'),
+            LocaleKeys.exit_yes.tr(),
             style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
           ),
         ),
         ElevatedButton(
           onPressed: () => Navigator.of(context).pop(false),
           child: Text(
-            MultiLanguages.of(context)!.translate(
-              'exit_no',
-            ),
+            LocaleKeys.exit_no.tr(),
             style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
           ),
         ),

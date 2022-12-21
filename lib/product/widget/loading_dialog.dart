@@ -1,6 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
+import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:shimmer/shimmer.dart';
 
 class LoadingDialog extends StatelessWidget {
@@ -20,7 +21,7 @@ class LoadingDialog extends StatelessWidget {
                 baseColor: Colors.white,
                 highlightColor: Colors.grey,
                 child: Text(
-                  MultiLanguages.of(context)!.translate('game_loading'),
+                  LocaleKeys.game_loading.tr(),
                   style: TextStyle(
                       letterSpacing: 1, fontSize: CustomTextStyle().fontSizeM),
                 ),

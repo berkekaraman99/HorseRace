@@ -2,13 +2,14 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
-import 'package:flutter_application_final/product/extension/sfx.dart';
-import 'package:flutter_application_final/product/global/animated_duration_const.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
-import 'package:flutter_application_final/product/global/winner_list.dart';
+import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/core/global/sfx.dart';
+import 'package:flutter_application_final/core/global/animated_duration_const.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
+import 'package:flutter_application_final/core/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 import 'package:flutter_application_final/product/widget/horse_winner_list.dart';
 import 'package:flutter_application_final/views/GamePageView/game_page.dart';
@@ -49,7 +50,7 @@ class _RaceEndState extends State<RaceEnd> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Center(
                   child: Text(
-                    MultiLanguages.of(context)!.translate('game_win'),
+                    LocaleKeys.game_win.tr(),
                     style: const TextStyle(fontSize: 24.0, letterSpacing: 1),
                   ),
                 )),
@@ -84,9 +85,7 @@ class _RaceEndState extends State<RaceEnd> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                    MultiLanguages.of(context)!
-                        .translate('gamestate_winnerlist'),
+                Text(LocaleKeys.gamestate_winnerlist.tr(),
                     style: TextStyle(
                         fontSize: CustomTextStyle().fontSizeHeader,
                         shadows: [
@@ -140,7 +139,7 @@ class _RaceEndState extends State<RaceEnd> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 8.0, horizontal: 16.0),
                       child: Text(
-                        MultiLanguages.of(context)!.translate('return_home'),
+                        LocaleKeys.return_home.tr(),
                         style: TextStyle(fontSize: CustomTextStyle().fontSizeM),
                       ),
                     )),
@@ -172,7 +171,7 @@ class _RaceEndState extends State<RaceEnd> {
                     )),
                 const SizedBox(height: 16),
                 Text(
-                  '${MultiLanguages.of(context)!.translate('selected_horse')} ${widget.selectedHorse?.name}',
+                  '${LocaleKeys.selected_horse.tr()} ${widget.selectedHorse?.name}',
                   style: TextStyle(
                       fontSize: CustomTextStyle().fontSizeM,
                       shadows: [

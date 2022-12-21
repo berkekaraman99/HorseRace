@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
+import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/product/widget/exit_dialog.dart';
 import 'package:flutter_application_final/views/NewGameView/new_game.dart';
 import 'package:flutter_application_final/views/SettingsView/settings.dart';
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(
-                  MultiLanguages.of(context)!.translate('app_name'),
+                  LocaleKeys.app_name.tr(),
                   style: TextStyle(
                       fontSize: CustomTextStyle().homeHeaderTextSize,
                       color: Colors.white,
@@ -84,8 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              MultiLanguages.of(context)!
-                                  .translate('app_newgame'),
+                              LocaleKeys.app_newgame.tr(),
                               style: TextStyle(
                                   fontSize: CustomTextStyle().fontSizeM),
                             ),
@@ -115,8 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              MultiLanguages.of(context)!
-                                  .translate('app_settings'),
+                              LocaleKeys.app_settings.tr(),
                               style: TextStyle(
                                   fontSize: CustomTextStyle().fontSizeM),
                             ),
@@ -147,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              MultiLanguages.of(context)!.translate('app_exit'),
+                              LocaleKeys.app_exit.tr(),
                               style: TextStyle(
                                   fontSize: CustomTextStyle().fontSizeM),
                             ),
@@ -188,14 +187,12 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(
-                      MultiLanguages.of(context)!
-                          .translate('start_select_horse'),
+                  Text(LocaleKeys.start_select_horse.tr(),
                       style: const TextStyle(fontSize: 36.0)),
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Text(MultiLanguages.of(context)!.translate('select_horse'),
+                  Text(LocaleKeys.select_horse.tr(),
                       style: const TextStyle(fontSize: 24.0)),
                   const Expanded(child: Center(child: NewGame())),
                   Row(
@@ -215,8 +212,7 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              MultiLanguages.of(context)!
-                                  .translate('return_home'),
+                              LocaleKeys.return_home.tr(),
                               style: TextStyle(
                                   fontSize: CustomTextStyle().fontSizeM),
                             ),

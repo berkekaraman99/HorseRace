@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/product/global/images.dart';
+import 'package:flutter_application_final/core/global/images.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 import 'package:flutter_application_final/product/widget/loading_dialog.dart';
 import 'package:flutter_application_final/views/GamePageView/game_page.dart';

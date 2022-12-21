@@ -23,5 +23,6 @@
     "dialog_exit_app": "App beenden",
     "dialog_exit_app_message": "Möchten Sie eine App beenden?",
     "exit_yes": "Ja",
-    "exit_no": "Nein"
+    "exit_no": "Nein",
+    "settings": "Einstellungen"
 }

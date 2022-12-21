@@ -1,9 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
+import 'package:flutter_application_final/core/lang/lang_manager.dart';
+import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/product/provider/theme_notifier.dart';
 import 'package:provider/provider.dart';
-import '../../product/global/lang_const.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -13,8 +14,6 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  MultiLanguages multiLanguages = MultiLanguages();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,20 +37,18 @@ class _SettingsState extends State<Settings> {
                           onTap: () => Navigator.pop(context),
                           child: const Icon(Icons.arrow_back)),
                     ),
-                    Text(' Settings',
+                    Text(' ${LocaleKeys.settings.tr()}',
                         style: Theme.of(context).textTheme.headline3),
                   ],
                 ),
                 const SizedBox(height: 12.0),
                 ListTile(
                   subtitle: Text(
-                    MultiLanguages.of(context)!
-                        .translate('settings_update_language'),
+                    LocaleKeys.settings_update_language.tr(),
                   ),
                   leading: const Icon(Icons.language_outlined),
                   title: Text(
-                    MultiLanguages.of(context)!
-                        .translate('settings_update_language'),
+                    LocaleKeys.settings_update_language.tr(),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   onTap: () => showDialog(
@@ -60,8 +57,7 @@ class _SettingsState extends State<Settings> {
                       return SimpleDialog(
                         children: [
                           Text(
-                            MultiLanguages.of(context)!
-                                .translate('app_settings_select_language'),
+                            LocaleKeys.app_settings_select_language.tr(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: CustomTextStyle().fontSizeM),
@@ -70,24 +66,59 @@ class _SettingsState extends State<Settings> {
                             color: ThemeData().dividerColor,
                           ),
                           SizedBox(
-                            height: AppLocales.locales.length * 30.0,
-                            width: 200.0,
-                            child: ListView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              itemCount: AppLocales.locales.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    langButton(
-                                        context,
-                                        AppLocales.langNames[index],
-                                        AppLocales.locales[index]),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
+                              width: 200.0,
+                              child: Column(
+                                children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        EasyLocalization.of(context)!.setLocale(
+                                            LanguageManager.instance.enLocale);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        child: Text(
+                                          "English",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
+                                      )),
+                                  TextButton(
+                                      onPressed: () {
+                                        EasyLocalization.of(context)!.setLocale(
+                                            LanguageManager.instance.trLocale);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        child: Text(
+                                          "Türkçe",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
+                                      )),
+                                  TextButton(
+                                      onPressed: () {
+                                        EasyLocalization.of(context)!.setLocale(
+                                            LanguageManager.instance.deLocale);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8.0),
+                                        child: Text(
+                                          "Deutsch",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge,
+                                        ),
+                                      )),
+                                ],
+                              )),
                         ],
                       );
                     },
@@ -96,13 +127,11 @@ class _SettingsState extends State<Settings> {
                 const SizedBox(height: 8.0),
                 ListTile(
                   title: Text(
-                    MultiLanguages.of(context)!
-                        .translate('app_settings_change_theme'),
+                    LocaleKeys.app_settings_change_theme.tr(),
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   subtitle: Text(
-                    MultiLanguages.of(context)!
-                        .translate('app_settings_change_theme'),
+                    LocaleKeys.app_settings_change_theme.tr(),
                   ),
                   leading: const Icon(Icons.sunny),
                   onTap: () => showDialog(
@@ -119,21 +148,6 @@ class _SettingsState extends State<Settings> {
       ),
     ));
   }
-
-  TextButton langButton(BuildContext context, String text, Locale locale) {
-    return TextButton(
-        onPressed: () {
-          multiLanguages.setLocale(context, locale);
-          Navigator.pop(context);
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-        ));
-  }
 }
 
 class _ChangeThemeDialog extends StatelessWidget {
@@ -145,7 +159,7 @@ class _ChangeThemeDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(children: [
       Text(
-        MultiLanguages.of(context)!.translate('app_settings_select_theme'),
+        LocaleKeys.app_settings_select_theme.tr(),
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headline5,
       ),
@@ -156,7 +170,7 @@ class _ChangeThemeDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            MultiLanguages.of(context)!.translate('theme_dark'),
+            LocaleKeys.theme_dark.tr(),
             style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
           )),
       const SizedBox(height: 16.0),
@@ -166,7 +180,7 @@ class _ChangeThemeDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            MultiLanguages.of(context)!.translate('theme_light'),
+            LocaleKeys.theme_light.tr(),
             style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
           ))
     ]);

@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
-import 'package:flutter_application_final/product/extension/sfx.dart';
-import 'package:flutter_application_final/product/global/animated_duration_const.dart';
-import 'package:flutter_application_final/product/global/images.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
-import 'package:flutter_application_final/product/global/winner_list.dart';
+import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/core/global/sfx.dart';
+import 'package:flutter_application_final/core/global/animated_duration_const.dart';
+import 'package:flutter_application_final/core/global/images.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
+import 'package:flutter_application_final/core/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
-import 'package:flutter_application_final/product/widget/horse_winner_list.dart';
-import 'package:flutter_application_final/views/HomeView/home.dart';
-import 'package:flutter_application_final/product/extension/multi_languages.dart';
 import 'package:flutter_application_final/views/RaceEndView/race_end.dart';
 
 part 'package:flutter_application_final/product/widget/horse_widget.dart';
@@ -143,10 +142,8 @@ class _GameStateState extends State<GameState> {
                             const SizedBox(width: 16.0),
                             Text(
                                 toggleWidget
-                                    ? MultiLanguages.of(context)!
-                                        .translate('gamestate_race_start')
-                                    : MultiLanguages.of(context)!
-                                        .translate('gamestate_race_end'),
+                                    ? LocaleKeys.gamestate_race_start.tr()
+                                    : LocaleKeys.gamestate_race_end.tr(),
                                 style: TextStyle(
                                     fontSize: CustomTextStyle().fontSizeHeader,
                                     shadows: [
@@ -300,7 +297,7 @@ class _GameStateState extends State<GameState> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 16.0),
                               child: Text(
-                                  "${MultiLanguages.of(context)!.translate('game_speed')}: $currentSpeed",
+                                  "${LocaleKeys.game_speed.tr()}: $currentSpeed",
                                   style: TextStyle(
                                       fontSize: CustomTextStyle().fontSizeM,
                                       shadows: [
@@ -338,7 +335,7 @@ class _GameStateState extends State<GameState> {
                       ),
                       const SizedBox(height: 16.0),
                       Text(
-                        '${MultiLanguages.of(context)!.translate('selected_horse')} ${widget.selectedHorse?.name}',
+                        '${LocaleKeys.selected_horse.tr()} ${widget.selectedHorse?.name}',
                         style: TextStyle(
                             fontSize: CustomTextStyle().fontSizeM,
                             shadows: [

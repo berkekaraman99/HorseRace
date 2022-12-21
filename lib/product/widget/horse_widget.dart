@@ -32,8 +32,7 @@ class _HorseWidgyState extends State<HorseWidgy> {
               height: 40.0,
               child: Center(
                   child: Text(
-                MultiLanguages.of(context)!
-                    .translate('gamestate_horse_race_finished'),
+                LocaleKeys.gamestate_horse_race_finished.tr(),
                 style: TextStyle(fontSize: CustomTextStyle().fontSizeM),
               )),
             )

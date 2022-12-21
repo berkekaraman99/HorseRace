@@ -23,5 +23,6 @@
     "dialog_exit_app": "Uygulamadan Çık",
     "dialog_exit_app_message": "Uygulamadan çıkmak istiyor musunuz?",
     "exit_yes": "Evet",
-    "exit_no": "Hayır"
+    "exit_no": "Hayır",
+    "settings": "Ayarlar"
 }

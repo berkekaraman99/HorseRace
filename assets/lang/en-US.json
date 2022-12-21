@@ -23,5 +23,6 @@
     "dialog_exit_app": "Exit App",
     "dialog_exit_app_message": "Do you want to exit an App?",
     "exit_yes": "Yes",
-    "exit_no": "No"
+    "exit_no": "No",
+    "settings": "Settings"
 }

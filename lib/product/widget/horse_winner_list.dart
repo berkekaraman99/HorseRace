@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/product/global/images.dart';
-import 'package:flutter_application_final/product/global/text_const.dart';
+import 'package:flutter_application_final/core/global/images.dart';
+import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 
 class WinnerList extends StatelessWidget {
