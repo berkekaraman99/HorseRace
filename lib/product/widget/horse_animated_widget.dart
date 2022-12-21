@@ -13,12 +13,12 @@ class _HorseAnimated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
-      duration: AnimatedDuration.animateDuration,
+      duration: context.durationSemiLow,
       left: aniConWidth,
       top: top,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
-        child: AppImages().horseImage,
+        child: ImageConstants.horseRunning,
       ),
     );
   }

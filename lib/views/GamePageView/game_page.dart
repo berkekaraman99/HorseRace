@@ -1,14 +1,12 @@
 import 'dart:async';
-import 'dart:math';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
+import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/constants/image/image_constants.dart';
+import 'package:flutter_application_final/core/extension/context_extension.dart';
+import 'package:flutter_application_final/core/extension/string_extension.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
 import 'package:flutter_application_final/core/global/sfx.dart';
-import 'package:flutter_application_final/core/global/animated_duration_const.dart';
-import 'package:flutter_application_final/core/global/images.dart';
-import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/core/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 import 'package:flutter_application_final/views/RaceEndView/race_end.dart';
@@ -28,7 +26,6 @@ class GameState extends StatefulWidget {
 class _GameStateState extends State<GameState> {
   List<double> aniConWidth =
       List.generate(5, (index) => Horse.horses[index].location ?? 0);
-  // List<Horse> winnerList = List.empty(growable: true);
   bool toggleWidget = true;
   final double finishLine = 900.0;
   final List<double> _horsePosition = [50, 150, 250, 350, 450];
@@ -37,7 +34,6 @@ class _GameStateState extends State<GameState> {
   double? currentSpeed;
   int? i;
 
-  // ! initState
   @override
   void initState() {
     super.initState();
@@ -125,7 +121,7 @@ class _GameStateState extends State<GameState> {
           physics: const BouncingScrollPhysics(),
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: context.height,
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
@@ -138,14 +134,14 @@ class _GameStateState extends State<GameState> {
                         fit: BoxFit.fitWidth,
                         child: Row(
                           children: [
-                            AppImages().flag,
+                            ImageConstants.flag,
                             const SizedBox(width: 16.0),
                             Text(
                                 toggleWidget
-                                    ? LocaleKeys.gamestate_race_start.tr()
-                                    : LocaleKeys.gamestate_race_end.tr(),
+                                    ? LocaleKeys.gamestate_race_start.locale
+                                    : LocaleKeys.gamestate_race_end.locale,
                                 style: TextStyle(
-                                    fontSize: CustomTextStyle().fontSizeHeader,
+                                    fontSize: AppConstants.fontSizeHeader,
                                     shadows: [
                                       Shadow(
                                           offset: const Offset(0.0, 0.0),
@@ -159,7 +155,7 @@ class _GameStateState extends State<GameState> {
                                               .secondaryHeaderColor)
                                     ])),
                             const SizedBox(width: 16.0),
-                            AppImages().flag,
+                            ImageConstants.flag,
                           ],
                         ),
                       ),
@@ -297,9 +293,9 @@ class _GameStateState extends State<GameState> {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 8.0, horizontal: 16.0),
                               child: Text(
-                                  "${LocaleKeys.game_speed.tr()}: $currentSpeed",
+                                  "${LocaleKeys.game_speed.locale}: $currentSpeed",
                                   style: TextStyle(
-                                      fontSize: CustomTextStyle().fontSizeM,
+                                      fontSize: AppConstants.fontSizeM,
                                       shadows: [
                                         Shadow(
                                             offset: const Offset(0.0, 0.0),
@@ -335,9 +331,9 @@ class _GameStateState extends State<GameState> {
                       ),
                       const SizedBox(height: 16.0),
                       Text(
-                        '${LocaleKeys.selected_horse.tr()} ${widget.selectedHorse?.name}',
+                        '${LocaleKeys.selected_horse.locale} ${widget.selectedHorse?.name}',
                         style: TextStyle(
-                            fontSize: CustomTextStyle().fontSizeM,
+                            fontSize: AppConstants.fontSizeM,
                             shadows: [
                               Shadow(
                                   offset: const Offset(0.0, 0.0),

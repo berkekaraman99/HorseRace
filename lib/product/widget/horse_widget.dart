@@ -32,8 +32,8 @@ class _HorseWidgyState extends State<HorseWidgy> {
               height: 40.0,
               child: Center(
                   child: Text(
-                LocaleKeys.gamestate_horse_race_finished.tr(),
-                style: TextStyle(fontSize: CustomTextStyle().fontSizeM),
+                LocaleKeys.gamestate_horse_race_finished.locale,
+                style: const TextStyle(fontSize: AppConstants.fontSizeM),
               )),
             )
           : AnimatedContainer(
@@ -43,7 +43,7 @@ class _HorseWidgyState extends State<HorseWidgy> {
               height: 60,
               width: widget.aniConWidth,
               margin: const EdgeInsets.all(8.0),
-              duration: AnimatedDuration.animateDuration,
+              duration: context.durationSemiLow,
             ),
     );
   }

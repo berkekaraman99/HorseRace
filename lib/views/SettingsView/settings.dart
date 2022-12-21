@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/extension/string_extension.dart';
 import 'package:flutter_application_final/core/lang/lang_manager.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
-import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/product/provider/theme_notifier.dart';
 import 'package:provider/provider.dart';
 
@@ -37,18 +38,18 @@ class _SettingsState extends State<Settings> {
                           onTap: () => Navigator.pop(context),
                           child: const Icon(Icons.arrow_back)),
                     ),
-                    Text(' ${LocaleKeys.settings.tr()}',
+                    Text(' ${LocaleKeys.settings.locale}',
                         style: Theme.of(context).textTheme.headline3),
                   ],
                 ),
                 const SizedBox(height: 12.0),
                 ListTile(
                   subtitle: Text(
-                    LocaleKeys.settings_update_language.tr(),
+                    LocaleKeys.settings_update_language.locale,
                   ),
                   leading: const Icon(Icons.language_outlined),
                   title: Text(
-                    LocaleKeys.settings_update_language.tr(),
+                    LocaleKeys.settings_update_language.locale,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   onTap: () => showDialog(
@@ -57,10 +58,10 @@ class _SettingsState extends State<Settings> {
                       return SimpleDialog(
                         children: [
                           Text(
-                            LocaleKeys.app_settings_select_language.tr(),
+                            LocaleKeys.app_settings_select_language.locale,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: CustomTextStyle().fontSizeM),
+                            style: const TextStyle(
+                                fontSize: AppConstants.fontSizeM),
                           ),
                           Divider(
                             color: ThemeData().dividerColor,
@@ -127,11 +128,11 @@ class _SettingsState extends State<Settings> {
                 const SizedBox(height: 8.0),
                 ListTile(
                   title: Text(
-                    LocaleKeys.app_settings_change_theme.tr(),
+                    LocaleKeys.app_settings_change_theme.locale,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   subtitle: Text(
-                    LocaleKeys.app_settings_change_theme.tr(),
+                    LocaleKeys.app_settings_change_theme.locale,
                   ),
                   leading: const Icon(Icons.sunny),
                   onTap: () => showDialog(
@@ -159,7 +160,7 @@ class _ChangeThemeDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(children: [
       Text(
-        LocaleKeys.app_settings_select_theme.tr(),
+        LocaleKeys.app_settings_select_theme.locale,
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.headline5,
       ),
@@ -170,8 +171,8 @@ class _ChangeThemeDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            LocaleKeys.theme_dark.tr(),
-            style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
+            LocaleKeys.theme_dark.locale,
+            style: const TextStyle(fontSize: AppConstants.fontSizeS),
           )),
       const SizedBox(height: 16.0),
       TextButton(
@@ -180,8 +181,8 @@ class _ChangeThemeDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            LocaleKeys.theme_light.tr(),
-            style: TextStyle(fontSize: CustomTextStyle().fontSizeS),
+            LocaleKeys.theme_light.locale,
+            style: const TextStyle(fontSize: AppConstants.fontSizeS),
           ))
     ]);
   }

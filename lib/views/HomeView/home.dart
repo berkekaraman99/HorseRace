@@ -1,8 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/extension/string_extension.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
-import 'package:flutter_application_final/core/global/text_const.dart';
 import 'package:flutter_application_final/product/widget/exit_dialog.dart';
 import 'package:flutter_application_final/views/NewGameView/new_game.dart';
 import 'package:flutter_application_final/views/SettingsView/settings.dart';
@@ -32,9 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
               FittedBox(
                 fit: BoxFit.fitWidth,
                 child: Text(
-                  LocaleKeys.app_name.tr(),
+                  LocaleKeys.app_name.locale,
                   style: TextStyle(
-                      fontSize: CustomTextStyle().homeHeaderTextSize,
+                      fontSize: AppConstants.homeHeaderTextSize,
                       color: Colors.white,
                       shadows: [
                         Shadow(
@@ -85,9 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              LocaleKeys.app_newgame.tr(),
-                              style: TextStyle(
-                                  fontSize: CustomTextStyle().fontSizeM),
+                              LocaleKeys.app_newgame.locale,
+                              style: const TextStyle(
+                                  fontSize: AppConstants.fontSizeM),
                             ),
                           ),
                         )).animate().fade(duration: 600.ms, delay: 1.seconds),
@@ -115,9 +115,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              LocaleKeys.app_settings.tr(),
-                              style: TextStyle(
-                                  fontSize: CustomTextStyle().fontSizeM),
+                              LocaleKeys.app_settings.locale,
+                              style: const TextStyle(
+                                  fontSize: AppConstants.fontSizeM),
                             ),
                           ),
                         )).animate().fade(duration: 600.ms, delay: 1500.ms),
@@ -146,9 +146,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              LocaleKeys.app_exit.tr(),
-                              style: TextStyle(
-                                  fontSize: CustomTextStyle().fontSizeM),
+                              LocaleKeys.app_exit.locale,
+                              style: const TextStyle(
+                                  fontSize: AppConstants.fontSizeM),
                             ),
                           ),
                         )).animate().fade(duration: 600.ms, delay: 2.seconds),
@@ -187,12 +187,12 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(LocaleKeys.start_select_horse.tr(),
+                  Text(LocaleKeys.start_select_horse.locale,
                       style: const TextStyle(fontSize: 36.0)),
                   const SizedBox(
                     height: 16.0,
                   ),
-                  Text(LocaleKeys.select_horse.tr(),
+                  Text(LocaleKeys.select_horse.locale,
                       style: const TextStyle(fontSize: 24.0)),
                   const Expanded(child: Center(child: NewGame())),
                   Row(
@@ -212,9 +212,9 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              LocaleKeys.return_home.tr(),
-                              style: TextStyle(
-                                  fontSize: CustomTextStyle().fontSizeM),
+                              LocaleKeys.return_home.locale,
+                              style: const TextStyle(
+                                  fontSize: AppConstants.fontSizeM),
                             ),
                           ))
                     ],

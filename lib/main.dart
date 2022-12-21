@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
-      title: 'Horse Race',
+      title: AppConstants.APP_NAME,
       theme: context.watch<ThemeNotifier>().currentTheme,
       home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
