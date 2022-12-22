@@ -11,6 +11,7 @@ import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
 import 'package:flutter_application_final/core/global/sfx.dart';
 import 'package:flutter_application_final/core/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
+import 'package:flutter_application_final/product/widget/background_image.dart';
 import 'package:flutter_application_final/product/widget/horse_winner_list.dart';
 import 'package:flutter_application_final/views/GamePageView/game_page.dart';
 import 'package:flutter_application_final/views/HomeView/home.dart';
@@ -74,11 +75,7 @@ class _RaceEndState extends State<RaceEnd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/main_background.png'),
-                fit: BoxFit.cover)),
+      body: BackgroundImage(
         child: Center(
           child: SizedBox(
             height: context.height,
@@ -88,15 +85,16 @@ class _RaceEndState extends State<RaceEnd> {
                 Text(LocaleKeys.gamestate_winnerlist.locale,
                     style: TextStyle(
                         fontSize: AppConstants.fontSizeHeader,
+                        fontWeight: FontWeight.w700,
                         shadows: [
                           Shadow(
                               offset: const Offset(0.0, 0.0),
                               blurRadius: 3.0,
-                              color: Theme.of(context).secondaryHeaderColor),
+                              color: Theme.of(context).shadowColor),
                           Shadow(
                               offset: const Offset(0.0, 0.0),
                               blurRadius: 3.0,
-                              color: Theme.of(context).secondaryHeaderColor)
+                              color: Theme.of(context).shadowColor)
                         ])).animate().fade(duration: 500.ms),
                 const SizedBox(height: 16.0),
                 FittedBox(
@@ -123,7 +121,24 @@ class _RaceEndState extends State<RaceEnd> {
                         ),
                       )).animate().fade(duration: context.durationSemiLow),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8.0),
+                Text(
+                  '${LocaleKeys.selected_horse.locale} ${widget.selectedHorse?.name}',
+                  style: TextStyle(
+                      fontSize: AppConstants.fontSizeM,
+                      fontWeight: FontWeight.w700,
+                      shadows: [
+                        Shadow(
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 3.0,
+                            color: Theme.of(context).shadowColor),
+                        Shadow(
+                            offset: const Offset(0.0, 0.0),
+                            blurRadius: 3.0,
+                            color: Theme.of(context).shadowColor)
+                      ]),
+                ),
+                const SizedBox(height: 8.0),
                 ElevatedButton(
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -142,7 +157,7 @@ class _RaceEndState extends State<RaceEnd> {
                             const TextStyle(fontSize: AppConstants.fontSizeM),
                       ),
                     )),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8.0),
                 ElevatedButton(
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
@@ -160,28 +175,15 @@ class _RaceEndState extends State<RaceEnd> {
                             return const GameBottomSheet();
                           });
                     },
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 16.0),
                       child: Text(
-                        'Play Again',
-                        style: TextStyle(fontSize: AppConstants.fontSizeM),
+                        LocaleKeys.play_again.locale,
+                        style:
+                            const TextStyle(fontSize: AppConstants.fontSizeM),
                       ),
                     )),
-                const SizedBox(height: 16),
-                Text(
-                  '${LocaleKeys.selected_horse.locale} ${widget.selectedHorse?.name}',
-                  style: TextStyle(fontSize: AppConstants.fontSizeM, shadows: [
-                    Shadow(
-                        offset: const Offset(0.0, 0.0),
-                        blurRadius: 3.0,
-                        color: Theme.of(context).secondaryHeaderColor),
-                    Shadow(
-                        offset: const Offset(0.0, 0.0),
-                        blurRadius: 3.0,
-                        color: Theme.of(context).secondaryHeaderColor)
-                  ]),
-                ),
                 ConfettiWidgy(
                     confettiController: _confettiController,
                     alignment: Alignment.topRight,

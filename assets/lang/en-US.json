@@ -21,8 +21,9 @@
     "game_win": "Congratulations, you won!",
     "game_speed": "Speed",
     "dialog_exit_app": "Exit App",
-    "dialog_exit_app_message": "Do you want to exit an App?",
+    "dialog_exit_app_message": "Do you want to exit the App?",
     "exit_yes": "Yes",
     "exit_no": "No",
-    "settings": "Settings"
+    "settings": "Settings",
+    "play_again": "Play Again"
 }

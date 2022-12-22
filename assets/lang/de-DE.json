@@ -21,8 +21,9 @@
     "game_win": "Glückwunsch du hast gewonnen!",
     "game_speed": "Geschwindigkeit",
     "dialog_exit_app": "App beenden",
-    "dialog_exit_app_message": "Möchten Sie eine App beenden?",
+    "dialog_exit_app_message": "Möchten Sie die Anwendung beenden?",
     "exit_yes": "Ja",
     "exit_no": "Nein",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "play_again": "Nochmal abspielen"
 }

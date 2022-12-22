@@ -31,7 +31,7 @@ class _NewGameState extends State<NewGame> {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
                             side: BorderSide(
-                                width: 2,
+                                width: 4,
                                 color: Horse.horses[index].color ??
                                     Colors.white)))),
                     onPressed: () {
@@ -71,7 +71,8 @@ class _NewGameState extends State<NewGame> {
                             (index + 1).toString(),
                             style: TextStyle(
                                 color: Horse.horses[index].color,
-                                fontSize: 48.0),
+                                fontSize: 48.0,
+                                fontWeight: FontWeight.w700),
                           )
                         ],
                       ),

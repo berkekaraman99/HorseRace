@@ -37,15 +37,24 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_animate: ^2.0.1
+
+  # cache
   shared_preferences: ^2.0.15
+
+  # visual effects
   confetti: ^0.7.0
+  flutter_animate: ^2.0.1
+  shimmer: ^2.0.0
+
+  # sound
   audioplayers: ^1.1.1
+  # language
   easy_localization: ^3.0.1
+
+  # splash screen
   # flutter_native_splash: ^2.2.16
   flutter_launcher_icons: ^0.11.0
   provider: ^6.0.4
-  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,7 +67,12 @@ flutter:
   fonts:
     - family: VT
       fonts:
-        - asset: assets/font/VT323.ttf
+        - asset: assets/fonts/VT323.ttf
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/Quicksand-Regular.ttf
+        - asset: assets/fonts/Quicksand-Bold.ttf
+          weight: 700
 
   assets:
     - assets/images/

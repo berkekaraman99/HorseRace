@@ -14,29 +14,37 @@ class ExitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      elevation: 0,
       title: Text(LocaleKeys.dialog_exit_app.locale,
           style: const TextStyle(fontSize: AppConstants.fontSizeL)),
       content: Text(LocaleKeys.dialog_exit_app_message.locale,
           style: const TextStyle(fontSize: AppConstants.fontSizeS)),
       actions: [
-        ElevatedButton(
-          onPressed: () async {
-            SystemNavigator.pop();
-            await Future.delayed(const Duration(milliseconds: 500));
-            exit(0);
-          },
-          child: Text(
-            LocaleKeys.exit_yes.locale,
-            style: const TextStyle(fontSize: AppConstants.fontSizeS),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () => Navigator.of(context).pop(false),
-          child: Text(
-            LocaleKeys.exit_no.locale,
-            style: const TextStyle(fontSize: AppConstants.fontSizeS),
-          ),
-        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                Navigator.pop(context);
+                await Future.delayed(const Duration(milliseconds: 500));
+                SystemNavigator.pop();
+              },
+              child: Text(
+                LocaleKeys.exit_yes.locale,
+                style: const TextStyle(fontSize: AppConstants.fontSizeS),
+              ),
+            ),
+            const SizedBox(width: 16.0),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(
+                LocaleKeys.exit_no.locale,
+                style: const TextStyle(fontSize: AppConstants.fontSizeS),
+              ),
+            ),
+            const SizedBox(width: 10.0)
+          ],
+        )
       ],
     );
   }

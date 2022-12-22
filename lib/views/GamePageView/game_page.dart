@@ -9,6 +9,7 @@ import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
 import 'package:flutter_application_final/core/global/sfx.dart';
 import 'package:flutter_application_final/core/global/winner_list.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
+import 'package:flutter_application_final/product/widget/background_image.dart';
 import 'package:flutter_application_final/views/RaceEndView/race_end.dart';
 
 part 'package:flutter_application_final/product/widget/horse_widget.dart';
@@ -112,11 +113,7 @@ class _GameStateState extends State<GameState> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/main_background.png'),
-                fit: BoxFit.cover)),
+      body: BackgroundImage(
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
@@ -142,17 +139,17 @@ class _GameStateState extends State<GameState> {
                                     : LocaleKeys.gamestate_race_end.locale,
                                 style: TextStyle(
                                     fontSize: AppConstants.fontSizeHeader,
+                                    color: context.theme.primaryColor,
+                                    fontWeight: FontWeight.w700,
                                     shadows: [
                                       Shadow(
                                           offset: const Offset(0.0, 0.0),
                                           blurRadius: 3.0,
-                                          color: Theme.of(context)
-                                              .secondaryHeaderColor),
+                                          color: Theme.of(context).shadowColor),
                                       Shadow(
                                           offset: const Offset(0.0, 0.0),
                                           blurRadius: 3.0,
-                                          color: Theme.of(context)
-                                              .secondaryHeaderColor)
+                                          color: Theme.of(context).shadowColor)
                                     ])),
                             const SizedBox(width: 16.0),
                             ImageConstants.flag,
@@ -296,17 +293,18 @@ class _GameStateState extends State<GameState> {
                                   "${LocaleKeys.game_speed.locale}: $currentSpeed",
                                   style: TextStyle(
                                       fontSize: AppConstants.fontSizeM,
+                                      fontWeight: FontWeight.w700,
                                       shadows: [
                                         Shadow(
                                             offset: const Offset(0.0, 0.0),
                                             blurRadius: 3.0,
-                                            color: Theme.of(context)
-                                                .secondaryHeaderColor),
+                                            color:
+                                                Theme.of(context).shadowColor),
                                         Shadow(
                                             offset: const Offset(0.0, 0.0),
                                             blurRadius: 3.0,
-                                            color: Theme.of(context)
-                                                .secondaryHeaderColor)
+                                            color:
+                                                Theme.of(context).shadowColor)
                                       ])),
                             ),
                           ),
@@ -334,16 +332,16 @@ class _GameStateState extends State<GameState> {
                         '${LocaleKeys.selected_horse.locale} ${widget.selectedHorse?.name}',
                         style: TextStyle(
                             fontSize: AppConstants.fontSizeM,
+                            fontWeight: FontWeight.w700,
                             shadows: [
                               Shadow(
                                   offset: const Offset(0.0, 0.0),
                                   blurRadius: 3.0,
-                                  color:
-                                      Theme.of(context).secondaryHeaderColor),
+                                  color: Theme.of(context).shadowColor),
                               Shadow(
                                   offset: const Offset(0.0, 0.0),
                                   blurRadius: 3.0,
-                                  color: Theme.of(context).secondaryHeaderColor)
+                                  color: Theme.of(context).shadowColor)
                             ]),
                       ),
                     ],

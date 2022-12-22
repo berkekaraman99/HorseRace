@@ -23,13 +23,15 @@ class WinnerList extends StatelessWidget {
                 '${index! + 1}.',
                 style: const TextStyle(fontSize: AppConstants.fontSizeL),
               ),
-              ImageConstants.horseIcon,
               const SizedBox(width: 16.0),
+              ImageConstants.horseIcon,
+              const SizedBox(width: 8.0),
               Text(
                 '${winnerList[index!].name}',
                 style: TextStyle(
                     color: winnerList[index!].color,
-                    fontSize: AppConstants.fontSizeL),
+                    fontSize: AppConstants.fontSizeL,
+                    fontWeight: FontWeight.w700),
               )
             ],
           ),

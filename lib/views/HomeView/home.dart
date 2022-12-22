@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/extension/context_extension.dart';
 import 'package:flutter_application_final/core/extension/string_extension.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
+import 'package:flutter_application_final/product/widget/background_image.dart';
 import 'package:flutter_application_final/product/widget/exit_dialog.dart';
 import 'package:flutter_application_final/views/NewGameView/new_game.dart';
 import 'package:flutter_application_final/views/SettingsView/settings.dart';
@@ -18,11 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/main_background.png'),
-                fit: BoxFit.cover)),
+      body: BackgroundImage(
         child: Padding(
           padding: const EdgeInsets.only(top: 80.0, bottom: 64.0),
           child: Center(
@@ -35,16 +33,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   LocaleKeys.app_name.locale,
                   style: TextStyle(
                       fontSize: AppConstants.homeHeaderTextSize,
-                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
                       shadows: [
                         Shadow(
-                            offset: const Offset(3.0, 3.0),
+                            offset: const Offset(2.0, 1.0),
                             blurRadius: 3.0,
-                            color: Theme.of(context).primaryColor),
+                            color: Theme.of(context).shadowColor),
                         Shadow(
-                            offset: const Offset(3.0, 3.0),
+                            offset: const Offset(2.0, 1.0),
                             blurRadius: 3.0,
-                            color: Theme.of(context).primaryColor)
+                            color: Theme.of(context).shadowColor)
                       ]),
                 )
                     .animate()
@@ -179,9 +177,13 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 800),
         child: Container(
-          color: Theme.of(context).bottomAppBarColor,
+          decoration: BoxDecoration(
+              color: context.theme.bottomAppBarColor,
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(40.0),
+                  topRight: Radius.circular(40.0))),
           child: Padding(
-            padding: const EdgeInsets.only(top: 28.0, bottom: 12.0),
+            padding: const EdgeInsets.only(top: 32.0, bottom: 12.0),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -213,12 +215,11 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
                               LocaleKeys.return_home.locale,
-                              style: const TextStyle(
-                                  fontSize: AppConstants.fontSizeM),
+                              style: TextStyle(fontSize: context.mediumValue),
                             ),
                           ))
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

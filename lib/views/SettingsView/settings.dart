@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/extension/context_extension.dart';
 import 'package:flutter_application_final/core/extension/string_extension.dart';
 import 'package:flutter_application_final/core/lang/lang_manager.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
@@ -39,7 +39,7 @@ class _SettingsState extends State<Settings> {
                           child: const Icon(Icons.arrow_back)),
                     ),
                     Text(' ${LocaleKeys.settings.locale}',
-                        style: Theme.of(context).textTheme.headline3),
+                        style: context.textTheme.headline3),
                   ],
                 ),
                 const SizedBox(height: 12.0),
@@ -50,78 +50,12 @@ class _SettingsState extends State<Settings> {
                   leading: const Icon(Icons.language_outlined),
                   title: Text(
                     LocaleKeys.settings_update_language.locale,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: context.textTheme.headline5,
                   ),
                   onTap: () => showDialog(
                     context: context,
                     builder: (context) {
-                      return SimpleDialog(
-                        children: [
-                          Text(
-                            LocaleKeys.app_settings_select_language.locale,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: AppConstants.fontSizeM),
-                          ),
-                          Divider(
-                            color: ThemeData().dividerColor,
-                          ),
-                          SizedBox(
-                              width: 200.0,
-                              child: Column(
-                                children: [
-                                  TextButton(
-                                      onPressed: () {
-                                        EasyLocalization.of(context)!.setLocale(
-                                            LanguageManager.instance.enLocale);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0),
-                                        child: Text(
-                                          "English",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
-                                        ),
-                                      )),
-                                  TextButton(
-                                      onPressed: () {
-                                        EasyLocalization.of(context)!.setLocale(
-                                            LanguageManager.instance.trLocale);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0),
-                                        child: Text(
-                                          "Türkçe",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
-                                        ),
-                                      )),
-                                  TextButton(
-                                      onPressed: () {
-                                        EasyLocalization.of(context)!.setLocale(
-                                            LanguageManager.instance.deLocale);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0),
-                                        child: Text(
-                                          "Deutsch",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodyLarge,
-                                        ),
-                                      )),
-                                ],
-                              )),
-                        ],
-                      );
+                      return const _ChangeLanguageDialog();
                     },
                   ),
                 ),
@@ -151,6 +85,99 @@ class _SettingsState extends State<Settings> {
   }
 }
 
+class _ChangeLanguageDialog extends StatelessWidget {
+  const _ChangeLanguageDialog({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+          child: Text(
+            LocaleKeys.app_settings_select_language.locale,
+            textAlign: TextAlign.center,
+            style: context.textTheme.headline3,
+          ),
+        ),
+        Divider(
+          indent: 8.0,
+          endIndent: 8.0,
+          color: context.theme.dividerColor,
+          thickness: 0.5,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: SizedBox(
+              width: 250.0,
+              child: Column(
+                children: [
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: TextButton(
+                        onPressed: () {
+                          EasyLocalization.of(context)!
+                              .setLocale(LanguageManager.instance.enLocale);
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Text(
+                            "English",
+                            style: TextStyle(
+                                color: context.theme.primaryColor,
+                                fontSize: context.regularValue),
+                          ),
+                        )),
+                  ),
+                  const SizedBox(height: 16.0),
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: TextButton(
+                        onPressed: () {
+                          EasyLocalization.of(context)!
+                              .setLocale(LanguageManager.instance.trLocale);
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Text(
+                            "Türkçe",
+                            style: TextStyle(
+                                color: context.theme.primaryColor,
+                                fontSize: context.regularValue),
+                          ),
+                        )),
+                  ),
+                  const SizedBox(height: 16.0),
+                  FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: TextButton(
+                        onPressed: () {
+                          EasyLocalization.of(context)!
+                              .setLocale(LanguageManager.instance.deLocale);
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Text(
+                            "Deutsch",
+                            style: TextStyle(
+                                color: context.theme.primaryColor,
+                                fontSize: context.regularValue),
+                          ),
+                        )),
+                  ),
+                ],
+              )),
+        ),
+      ],
+    );
+  }
+}
+
 class _ChangeThemeDialog extends StatelessWidget {
   const _ChangeThemeDialog({
     Key? key,
@@ -159,31 +186,50 @@ class _ChangeThemeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(children: [
-      Text(
-        LocaleKeys.app_settings_select_theme.locale,
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline5,
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+        child: Text(
+          LocaleKeys.app_settings_select_theme.locale,
+          textAlign: TextAlign.center,
+          style: context.textTheme.headline3,
+        ),
       ),
-      Divider(color: ThemeData().dividerColor),
-      TextButton(
-          onPressed: () {
-            context.read<ThemeNotifier>().changeThemeDark();
-            Navigator.pop(context);
-          },
-          child: Text(
-            LocaleKeys.theme_dark.locale,
-            style: const TextStyle(fontSize: AppConstants.fontSizeS),
-          )),
-      const SizedBox(height: 16.0),
-      TextButton(
-          onPressed: () {
-            context.read<ThemeNotifier>().changeThemeLight();
-            Navigator.pop(context);
-          },
-          child: Text(
-            LocaleKeys.theme_light.locale,
-            style: const TextStyle(fontSize: AppConstants.fontSizeS),
-          ))
+      Divider(
+        indent: 8.0,
+        endIndent: 8.0,
+        color: context.theme.dividerColor,
+        thickness: 0.5,
+      ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Column(
+          children: [
+            TextButton(
+                onPressed: () {
+                  context.read<ThemeNotifier>().changeThemeDark();
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  LocaleKeys.theme_dark.locale,
+                  style: TextStyle(
+                      color: context.theme.primaryColor,
+                      fontSize: context.regularValue),
+                )),
+            const SizedBox(height: 16.0),
+            TextButton(
+                onPressed: () {
+                  context.read<ThemeNotifier>().changeThemeLight();
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  LocaleKeys.theme_light.locale,
+                  style: TextStyle(
+                      color: context.theme.primaryColor,
+                      fontSize: context.regularValue),
+                ))
+          ],
+        ),
+      ),
     ]);
   }
 }

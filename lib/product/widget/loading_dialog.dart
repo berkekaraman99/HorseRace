@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_final/core/constants/app/app_constants.dart';
+import 'package:flutter_application_final/core/extension/context_extension.dart';
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -18,8 +19,8 @@ class LoadingDialog extends StatelessWidget {
             width: 300,
             child: Center(
               child: Shimmer.fromColors(
-                baseColor: Colors.white,
-                highlightColor: Colors.grey,
+                baseColor: context.theme.primaryColor,
+                highlightColor: context.theme.highlightColor,
                 child: Text(
                   LocaleKeys.game_loading.tr(),
                   style: const TextStyle(
