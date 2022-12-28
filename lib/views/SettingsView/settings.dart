@@ -39,7 +39,8 @@ class _SettingsState extends State<Settings> {
                           child: const Icon(Icons.arrow_back)),
                     ),
                     Text(' ${LocaleKeys.settings.locale}',
-                        style: context.textTheme.headline3),
+                        style: context.textTheme.headline4
+                            ?.copyWith(fontWeight: FontWeight.w600)),
                   ],
                 ),
                 const SizedBox(height: 12.0),
@@ -96,10 +97,13 @@ class _ChangeLanguageDialog extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-          child: Text(
-            LocaleKeys.app_settings_select_language.locale,
-            textAlign: TextAlign.center,
-            style: context.textTheme.headline3,
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(
+              LocaleKeys.app_settings_select_language.locale,
+              textAlign: TextAlign.center,
+              style: context.textTheme.headline3,
+            ),
           ),
         ),
         Divider(
@@ -188,10 +192,13 @@ class _ChangeThemeDialog extends StatelessWidget {
     return SimpleDialog(children: [
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
-        child: Text(
-          LocaleKeys.app_settings_select_theme.locale,
-          textAlign: TextAlign.center,
-          style: context.textTheme.headline3,
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(
+            LocaleKeys.app_settings_select_theme.locale,
+            textAlign: TextAlign.center,
+            style: context.textTheme.headline3,
+          ),
         ),
       ),
       Divider(

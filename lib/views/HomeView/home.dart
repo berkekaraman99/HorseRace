@@ -175,7 +175,7 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 800),
+        constraints: const BoxConstraints(maxHeight: 700),
         child: Container(
           decoration: BoxDecoration(
               color: context.theme.bottomAppBarColor,
@@ -186,40 +186,38 @@ class _GameBottomSheetState extends State<GameBottomSheet> {
             padding: const EdgeInsets.only(top: 32.0, bottom: 12.0),
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text(LocaleKeys.start_select_horse.locale,
-                      style: const TextStyle(fontSize: 36.0)),
-                  const SizedBox(
-                    height: 16.0,
-                  ),
-                  Text(LocaleKeys.select_horse.locale,
-                      style: const TextStyle(fontSize: 24.0)),
-                  const Expanded(child: Center(child: NewGame())),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
                     children: [
-                      ElevatedButton.icon(
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(99.0),
-                                      side: const BorderSide(
-                                          width: 2,
-                                          color: Colors.transparent)))),
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(Icons.arrow_back),
-                          label: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 16.0),
-                            child: Text(
-                              LocaleKeys.return_home.locale,
-                              style: TextStyle(fontSize: context.mediumValue),
-                            ),
-                          ))
+                      Text(LocaleKeys.start_select_horse.locale,
+                          style: const TextStyle(fontSize: 36.0)),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      Text(LocaleKeys.select_horse.locale,
+                          style: const TextStyle(fontSize: 24.0)),
                     ],
                   ),
+                  const NewGame(),
+                  ElevatedButton.icon(
+                      style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(99.0),
+                                  side: const BorderSide(
+                                      width: 2, color: Colors.transparent)))),
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back),
+                      label: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 16.0),
+                        child: Text(
+                          LocaleKeys.return_home.locale,
+                          style: TextStyle(fontSize: context.mediumValue),
+                        ),
+                      )),
                 ],
               ),
             ),
