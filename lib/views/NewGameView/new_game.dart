@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_application_final/core/constants/image/image_constants.dart';
 import 'package:flutter_application_final/core/extension/context_extension.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 import 'package:flutter_application_final/product/widget/loading_dialog.dart';
 import 'package:flutter_application_final/views/GamePageView/game_page.dart';
 
+//* AT SEÇİMİNİN YAPILDIGI SAYFA
 class NewGame extends StatefulWidget {
   const NewGame({super.key});
 
@@ -39,7 +39,7 @@ class _NewGameState extends State<NewGame> {
           ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 150, maxWidth: 200),
             child: PageView.builder(
-                physics: const BouncingScrollPhysics(),
+                physics: const AlwaysScrollableScrollPhysics(),
                 controller: _pageController,
                 itemCount: Horse.horses.length,
                 itemBuilder: (context, index) {

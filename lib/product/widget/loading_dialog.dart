@@ -5,6 +5,7 @@ import 'package:flutter_application_final/core/extension/context_extension.dart'
 import 'package:flutter_application_final/core/lang/locale_keys.g.dart';
 import 'package:shimmer/shimmer.dart';
 
+// New Game at seçimi yapıldıktan sonra ekranda gözüken yükleniyor diyalogu
 class LoadingDialog extends StatelessWidget {
   const LoadingDialog({
     Key? key,

@@ -3,6 +3,7 @@ import 'package:flutter_application_final/core/constants/app/app_constants.dart'
 import 'package:flutter_application_final/core/constants/image/image_constants.dart';
 import 'package:flutter_application_final/product/model/horse_model.dart';
 
+//Kazanan listesinin yazdırıldıgı sınıf
 // ignore: must_be_immutable
 class WinnerList extends StatelessWidget {
   WinnerList({Key? key, required this.winnerList, this.index})

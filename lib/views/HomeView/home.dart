@@ -9,14 +9,15 @@ import 'package:flutter_application_final/product/widget/exit_dialog.dart';
 import 'package:flutter_application_final/views/NewGameView/new_game.dart';
 import 'package:flutter_application_final/views/SettingsView/settings.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+//* ANASAYFA
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,15 +69,22 @@ class _MyHomePageState extends State<MyHomePage> {
                                         width: 2, color: Colors.white)))),
                         onPressed: () {
                           showModalBottomSheet(
-                              backgroundColor: Colors.transparent,
-                              isScrollControlled: true,
+                              isScrollControlled: false,
                               isDismissible: false,
                               context: context,
                               builder: (BuildContext context) {
-                                return const GameBottomSheet();
+                                return MediaQuery(
+                                  data: MediaQueryData.fromWindow(
+                                      WidgetsBinding.instance.window),
+                                  child:
+                                      const SafeArea(child: GameBottomSheet()),
+                                );
                               });
                         },
-                        icon: const Icon(Icons.play_arrow_outlined),
+                        icon: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Icon(Icons.play_arrow_outlined,
+                                size: context.mediumValue)),
                         label: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Padding(
@@ -106,7 +114,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               MaterialPageRoute(
                                   builder: (context) => const Settings()));
                         },
-                        icon: const Icon(Icons.settings),
+                        icon: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Icon(Icons.settings,
+                                size: context.mediumValue)),
                         label: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Padding(
@@ -137,7 +148,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 return const ExitDialog();
                               });
                         },
-                        icon: const Icon(Icons.exit_to_app_rounded),
+                        icon: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Icon(Icons.exit_to_app_rounded,
+                                size: context.mediumValue)),
                         label: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Padding(
@@ -173,54 +187,44 @@ class GameBottomSheet extends StatefulWidget {
 class _GameBottomSheetState extends State<GameBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 700),
-        child: Container(
-          decoration: BoxDecoration(
-              color: context.theme.bottomAppBarColor,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(40.0),
-                  topRight: Radius.circular(40.0))),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 32.0, bottom: 12.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 800),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 32.0, bottom: 12.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      Text(LocaleKeys.start_select_horse.locale,
-                          style: const TextStyle(fontSize: 36.0)),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      Text(LocaleKeys.select_horse.locale,
-                          style: const TextStyle(fontSize: 24.0)),
-                    ],
+                  Text(LocaleKeys.start_select_horse.locale,
+                      style: const TextStyle(fontSize: 36.0)),
+                  const SizedBox(
+                    height: 16.0,
                   ),
-                  const NewGame(),
-                  ElevatedButton.icon(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(99.0),
-                                  side: const BorderSide(
-                                      width: 2, color: Colors.transparent)))),
-                      onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back),
-                      label: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 16.0),
-                        child: Text(
-                          LocaleKeys.return_home.locale,
-                          style: TextStyle(fontSize: context.mediumValue),
-                        ),
-                      )),
+                  Text(LocaleKeys.select_horse.locale,
+                      style: const TextStyle(fontSize: 24.0)),
                 ],
               ),
-            ),
+              const NewGame(),
+              ElevatedButton.icon(
+                  style: ButtonStyle(
+                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(99.0),
+                          side: const BorderSide(
+                              width: 2, color: Colors.transparent)))),
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(Icons.arrow_back, size: context.mediumValue),
+                  label: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16.0),
+                    child: Text(
+                      LocaleKeys.return_home.locale,
+                      style: TextStyle(fontSize: context.mediumValue),
+                    ),
+                  )),
+            ],
           ),
         ),
       ),

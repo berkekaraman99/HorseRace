@@ -16,6 +16,7 @@ import 'package:flutter_application_final/product/widget/horse_winner_list.dart'
 import 'package:flutter_application_final/views/GamePageView/game_page.dart';
 import 'package:flutter_application_final/views/HomeView/home.dart';
 
+//* OYUN SONU SAYFASI
 class RaceEnd extends StatefulWidget {
   const RaceEnd({super.key, this.selectedHorse});
   final Horse? selectedHorse;
@@ -59,7 +60,7 @@ class _RaceEndState extends State<RaceEnd> {
         },
       );
       _confettiController.play();
-      AudioPlay().playGameWinSound();
+      await AudioPlay().playGameWinSound();
       Timer(const Duration(seconds: 4), (() {
         Navigator.pop(context);
       }));

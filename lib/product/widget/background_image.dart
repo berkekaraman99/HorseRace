@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ARKAPLAN RENGİ
 class BackgroundImage extends StatelessWidget {
   const BackgroundImage({super.key, required this.child});
   final Widget child;

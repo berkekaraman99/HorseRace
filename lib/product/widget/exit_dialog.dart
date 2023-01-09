@@ -1,6 +1,4 @@
 //* Çıkış diyalogu
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_final/core/constants/app/app_constants.dart';

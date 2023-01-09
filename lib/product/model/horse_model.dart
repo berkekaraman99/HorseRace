@@ -9,7 +9,7 @@ class Horse {
   bool? isFinished;
   int? index;
   Color? color;
-  double? speed = 1.0;
+  int? speed = 1;
   Horse(
       {this.name,
       this.location,
@@ -19,7 +19,7 @@ class Horse {
       this.color});
 
   Future<void> calcuteMove() async {
-    move = Random.secure().nextDouble() * 3 * speed!;
+    move = Random.secure().nextDouble() * 5;
   }
 
   Future<void> updateLocation() async {
@@ -30,11 +30,11 @@ class Horse {
     isFinished = true;
   }
 
-  void changeSpeed(double speed) {
+  void changeSpeed(int speed) {
     this.speed = speed;
   }
 
-  double getSpeed() => speed!;
+  int getSpeed() => speed!;
 
   static List<Horse> horses = [
     Horse(

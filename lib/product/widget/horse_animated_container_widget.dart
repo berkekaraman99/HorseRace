@@ -1,7 +1,8 @@
 part of 'package:flutter_application_final/views/GamePageView/game_page.dart';
 
-class HorseWidgy extends StatefulWidget {
-  const HorseWidgy({
+// oyun sayfasında atların ilermesini gösteren renkli çubuk
+class _HorseAnimatedContainer extends StatefulWidget {
+  const _HorseAnimatedContainer({
     Key? key,
     required this.finishLine,
     required this.aniConWidth,
@@ -17,10 +18,11 @@ class HorseWidgy extends StatefulWidget {
   final double top;
 
   @override
-  State<HorseWidgy> createState() => _HorseWidgyState();
+  State<_HorseAnimatedContainer> createState() =>
+      _HorseAnimatedContainerState();
 }
 
-class _HorseWidgyState extends State<HorseWidgy> {
+class _HorseAnimatedContainerState extends State<_HorseAnimatedContainer> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -43,7 +45,7 @@ class _HorseWidgyState extends State<HorseWidgy> {
               height: 60,
               width: widget.aniConWidth,
               margin: const EdgeInsets.all(8.0),
-              duration: context.durationSemiLow,
+              duration: const Duration(milliseconds: 500),
             ),
     );
   }

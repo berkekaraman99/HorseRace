@@ -12,10 +12,11 @@ import 'package:flutter_application_final/product/model/horse_model.dart';
 import 'package:flutter_application_final/product/widget/background_image.dart';
 import 'package:flutter_application_final/views/RaceEndView/race_end.dart';
 
-part 'package:flutter_application_final/product/widget/horse_widget.dart';
+part 'package:flutter_application_final/product/widget/horse_animated_container_widget.dart';
 part 'package:flutter_application_final/product/widget/horse_animated_widget.dart';
 part 'package:flutter_application_final/product/widget/confetti_widget.dart';
 
+//* OYUN SAYFASI
 class GameState extends StatefulWidget {
   const GameState({super.key, this.selectedHorse});
   final Horse? selectedHorse;
@@ -30,10 +31,10 @@ class _GameStateState extends State<GameState> {
   bool toggleWidget = true;
   final double finishLine = 900.0;
   final List<double> _horsePosition = [50, 150, 250, 350, 450];
-  int speed = 1;
-  final List<double> _speeds = [1.0, 2.0, 5.0, 10.0];
-  double? currentSpeed;
+  final List<int> _speeds = [1, 2, 5, 10];
+  late int currentSpeed;
   int? i;
+  int hiz = 50;
 
   @override
   void initState() {
@@ -65,7 +66,7 @@ class _GameStateState extends State<GameState> {
               horse.isFinished = true;
             }
           }
-          await Future.delayed(const Duration(milliseconds: 50));
+          await Future.delayed(Duration(milliseconds: hiz ~/ currentSpeed));
         }
       }
     }
@@ -96,7 +97,7 @@ class _GameStateState extends State<GameState> {
   // ! bekleme fonksiyonu
   Future<void> _waitFunction() async {
     await Future.delayed(const Duration(seconds: 5)).then((_) async {
-      AudioPlay().playGameStartSound();
+      await AudioPlay().playGameStartSound();
       _func();
     });
   }
@@ -178,7 +179,7 @@ class _GameStateState extends State<GameState> {
                             child: Stack(
                               children: [
                                 // ! 1. At
-                                HorseWidgy(
+                                _HorseAnimatedContainer(
                                   finishLine: finishLine,
                                   aniConWidth: aniConWidth[0],
                                   horse: Horse.horses[0],
@@ -192,7 +193,7 @@ class _GameStateState extends State<GameState> {
                                         top: _horsePosition[0],
                                       ),
                                 // ! 2. At
-                                HorseWidgy(
+                                _HorseAnimatedContainer(
                                   finishLine: finishLine,
                                   aniConWidth: aniConWidth[1],
                                   horse: Horse.horses[1],
@@ -206,7 +207,7 @@ class _GameStateState extends State<GameState> {
                                         top: _horsePosition[1],
                                       ),
                                 // ! 3. At
-                                HorseWidgy(
+                                _HorseAnimatedContainer(
                                   finishLine: finishLine,
                                   aniConWidth: aniConWidth[2],
                                   horse: Horse.horses[2],
@@ -220,7 +221,7 @@ class _GameStateState extends State<GameState> {
                                         top: _horsePosition[2],
                                       ),
                                 // ! 4. At
-                                HorseWidgy(
+                                _HorseAnimatedContainer(
                                   finishLine: finishLine,
                                   aniConWidth: aniConWidth[3],
                                   horse: Horse.horses[3],
@@ -234,7 +235,7 @@ class _GameStateState extends State<GameState> {
                                         top: _horsePosition[3],
                                       ),
                                 // ! 5. At
-                                HorseWidgy(
+                                _HorseAnimatedContainer(
                                   finishLine: finishLine,
                                   aniConWidth: aniConWidth[4],
                                   horse: Horse.horses[4],
@@ -277,13 +278,13 @@ class _GameStateState extends State<GameState> {
                                     i = 3;
                                   }
                                   setState(() {
-                                    for (var horse in Horse.horses) {
-                                      horse.changeSpeed(_speeds[i!]);
-                                    }
                                     currentSpeed = _speeds[i!];
                                   });
                                 },
-                                child: const Icon(Icons.arrow_left_outlined)),
+                                child: FittedBox(
+                                    fit: BoxFit.fitHeight,
+                                    child: Icon(Icons.arrow_left_outlined,
+                                        size: context.mediumValue))),
                           ),
                           Card(
                             child: Padding(
@@ -317,13 +318,14 @@ class _GameStateState extends State<GameState> {
                                     i = 0;
                                   }
                                   setState(() {
-                                    for (var horse in Horse.horses) {
-                                      horse.changeSpeed(_speeds[i!]);
-                                    }
                                     currentSpeed = _speeds[i!];
                                   });
                                 },
-                                child: const Icon(Icons.arrow_right_outlined)),
+                                child: FittedBox(
+                                  fit: BoxFit.fitHeight,
+                                  child: Icon(Icons.arrow_right_outlined,
+                                      size: context.mediumValue),
+                                )),
                           ),
                         ],
                       ),

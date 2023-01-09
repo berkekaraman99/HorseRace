@@ -1,6 +1,6 @@
 part of 'package:flutter_application_final/views/GamePageView/game_page.dart';
 
-// ! confetti widgeti
+// ! confetti widgeti, seçtiginiz at kazandıgı zaman ekranda konfeti parçaları gözükür
 class ConfettiWidgy extends StatelessWidget {
   const ConfettiWidgy(
       {Key? key,

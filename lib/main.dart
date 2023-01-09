@@ -31,8 +31,11 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       title: AppConstants.APP_NAME,
       theme: context.watch<ThemeNotifier>().currentTheme,
-      home: const MyHomePage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+
+// AHMET_BERKE_KARAMAN_201141026
