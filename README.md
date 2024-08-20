@@ -1,3 +1,3 @@
 # HorseRace (At Yarışı)
 
-HorseRace universal mobile app written with Flutter
+Üniversitede, Mobil Yazılım Geliştirme dersinin finali için geliştirmiş olduğum mobil uygulamadır.
